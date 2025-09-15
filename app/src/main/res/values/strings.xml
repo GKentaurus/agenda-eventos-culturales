@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Agenda de Eventos Culturales</string>
+    <string name="perfil">Perfil</string>
+    <string name="fotos">Fotos</string>
+    <string name="video">Video</string>
+    <string name="web">Web</string>
 </resources>

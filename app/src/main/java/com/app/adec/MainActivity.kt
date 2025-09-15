@@ -1,47 +1,38 @@
 package com.app.adec
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.app.adec.ui.theme.MyApplicationTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 
-class MainActivity : ComponentActivity() {
+// La MainActivity implementa la interfaz del MenuFragment para poder recibir los eventos de clic.
+class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            MyApplicationTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        // Si es la primera vez que se crea la actividad, carga el fragmento por defecto.
+        // Esto evita que se recargue el fragmento al girar la pantalla, por ejemplo.
+        if (savedInstanceState == null) {
+            onOptionClicked("profile")
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    // Este es el métod0 obligatorio que implementa la interfaz. Se ejecuta cuando se pulsa un botón en el menú.
+    override fun onOptionClicked(option: String) {
+        // Usa una expresión 'when' (similar a un switch) para decidir qué fragmento mostrar.
+        val fragment: Fragment = when (option) {
+            "photos" -> PhotosFragment()
+            "video" -> VideoFragment()
+            "web" -> WebFragment()
+            else -> ProfileFragment() // Caso por defecto
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
+        // Inicia una transacción de fragmentos para reemplazar el contenido del contenedor derecho.
+        supportFragmentManager.commit {
+            replace(R.id.content_fragment_container, fragment)
+            setReorderingAllowed(true) // Optimización para las transiciones
+        }
     }
 }

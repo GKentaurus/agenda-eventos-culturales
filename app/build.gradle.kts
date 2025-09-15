@@ -9,7 +9,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.app.adec"
         minSdk = 21
         targetSdk = 36
         versionCode = 1
@@ -49,6 +49,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.fragment.ktx) // Add this line (use the latest stable version)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.resources) // For loading and tinting drawables on older versions of the platform
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
