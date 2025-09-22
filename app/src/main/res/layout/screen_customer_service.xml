@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="10dp"
     android:background="#F0F4F8">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Hola! Esta es la sección de Fotos."
+        android:text="¡Hola! Esta es la sección de Servicio al cliente."
         android:textSize="24sp"
         android:textColor="#374151"
         android:textStyle="bold" />

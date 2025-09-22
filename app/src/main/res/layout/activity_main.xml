@@ -4,6 +4,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="50dp"
     android:orientation="horizontal">
     <!-- android:orientation ->     Los elementos se colocarán uno al lado del otro -->
 
@@ -13,7 +14,8 @@
         android:name="com.app.adec.MenuFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        />
 
     <!-- android:name ->            Define qué fragmento se carga aquí por defecto -->
     <!-- android:layout_width ->    El ancho se definirá por el peso (weight) -->
@@ -24,7 +26,8 @@
         android:id="@+id/content_fragment_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2.5" />
+        android:layout_weight="2.8"
+        />
 
     <!-- android:layout_weight ->   Ocupa 2.5 partes del espacio, siendo más grande que el menú -->
 </LinearLayout>

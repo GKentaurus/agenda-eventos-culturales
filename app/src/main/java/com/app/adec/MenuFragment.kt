@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 
 // La clase hereda de Fragment y usa el layout que creamos
-class MenuFragment : Fragment(R.layout.fragment_menu) {
+class MenuFragment : Fragment(R.layout.section_menu) {
 
     // Define una interfaz para comunicarse con la Activity. Es un contrato.
     // La Activity que contenga este fragmento DEBE implementar esta interfaz.
@@ -29,13 +29,29 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
         }
 
         // Se asigna un listener a cada botón. Al hacer clic, se llama al métod0 de la interfaz.
-        view.findViewById<Button>(R.id.btn_profile)
-            .setOnClickListener { listener?.onOptionClicked("profile") }
-        view.findViewById<Button>(R.id.btn_photos)
-            .setOnClickListener { listener?.onOptionClicked("photos") }
-        view.findViewById<Button>(R.id.btn_video)
-            .setOnClickListener { listener?.onOptionClicked("video") }
-        view.findViewById<Button>(R.id.btn_web)
-            .setOnClickListener { listener?.onOptionClicked("web") }
+        view.findViewById<Button>(R.id.btn_event_explorer).setOnClickListener {
+            listener?.onOptionClicked("event_explorer")
+        }
+        view.findViewById<Button>(R.id.btn_generic_search).setOnClickListener {
+            listener?.onOptionClicked("generic_search")
+        }
+        view.findViewById<Button>(R.id.btn_filter_by_date).setOnClickListener {
+            listener?.onOptionClicked("filter_by_date")
+        }
+        view.findViewById<Button>(R.id.btn_event_manager).setOnClickListener {
+            listener?.onOptionClicked("event_manager")
+        }
+        view.findViewById<Button>(R.id.btn_event_register).setOnClickListener {
+            listener?.onOptionClicked("event_register")
+        }
+        view.findViewById<Button>(R.id.btn_customer_service).setOnClickListener {
+            listener?.onOptionClicked("customer_service")
+        }
+        view.findViewById<Button>(R.id.btn_profile).setOnClickListener {
+            listener?.onOptionClicked("profile")
+        }
+        view.findViewById<Button>(R.id.btn_web).setOnClickListener {
+            listener?.onOptionClicked("web")
+        }
     }
 }
