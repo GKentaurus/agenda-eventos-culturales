@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
         // Si es la primera vez que se crea la actividad, carga el fragmento por defecto.
         // Esto evita que se recargue el fragmento al girar la pantalla, por ejemplo.
         if (savedInstanceState == null) {
-            onOptionClicked("profile")
+            onOptionClicked("")
         }
     }
 
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
             "customer_service" -> CustomerServiceScreen()
             "profile" -> ProfileScreen()
             "web" -> WebBrowserScreen()
-            else -> ProfileScreen() // Caso por defecto
+            else -> EventExplorerScreen() // Caso por defecto
         }
 
         // Inicia una transacción de fragmentos para reemplazar el contenido del contenedor derecho.
