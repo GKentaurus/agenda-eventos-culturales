@@ -4,15 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:padding="10dp"
     android:background="#F0F4F8">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Hola! Esta es la sección de Explorar eventos."
+        android:text="@string/welcome_landing_top_bar"
+        android:textAlignment="center"
         android:textColor="#374151"
         android:textSize="24sp"
         android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subtitle_event_explorer"
+        android:textAlignment="center"
+        android:textColor="#374151"
+        android:textSize="18sp"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/cards_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

@@ -9,4 +9,9 @@
     <string name="btn_txt_profile">Perfil</string>
     <string name="btn_txt_web">Web</string>
     <string name="label_txt_menu">Menú</string>
+    <string name="welcome_landing_top_bar">¡Bienvenid@!</string>
+    <string name="subtitle_event_explorer">Explora los eventos que vienen en camino</string>
+    <string name="event_detail_description_title">Descripción</string>
+    <string name="event_detail_location_datetime_title">Lugar y fecha</string>
+    <string name="event_details_ticket_price_title">Valor de la entrada</string>
 </resources>
