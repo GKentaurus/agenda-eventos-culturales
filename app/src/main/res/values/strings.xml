@@ -14,4 +14,10 @@
     <string name="event_detail_description_title">Descripción</string>
     <string name="event_detail_location_datetime_title">Lugar y fecha</string>
     <string name="event_details_ticket_price_title">Valor de la entrada</string>
+    <string name="component_event_card_artist_name">Nombre del artista</string>
+    <string name="component_event_card_category">Categoría relacionada al evento</string>
+    <string name="component_event_card_event_title">Título del evento</string>
+    <string name="component_event_card_date_time_label">dd/MM/yyyy HH:mm:ss</string>
+    <string name="component_event_card_short_description_label">Descripción breve del evento</string>
+    <string name="btn_view_more_label">Ver más</string>
 </resources>
