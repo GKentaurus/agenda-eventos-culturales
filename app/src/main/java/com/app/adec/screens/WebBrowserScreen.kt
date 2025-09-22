@@ -1,4 +1,4 @@
-package com.app.adec
+package com.app.adec.screens
 
 import android.content.Context
 import android.os.Bundle
@@ -16,8 +16,9 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import com.app.adec.R
 
-class WebFragment : Fragment() {
+class WebBrowserScreen : Fragment() {
 
     private lateinit var web: WebView
     private lateinit var progress: ProgressBar
@@ -32,7 +33,7 @@ class WebFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_web, container, false)
+        return inflater.inflate(R.layout.screen_web_browser, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

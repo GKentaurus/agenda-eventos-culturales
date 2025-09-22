@@ -4,6 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.app.adec.screens.CustomerServiceScreen
+import com.app.adec.screens.EventExplorerScreen
+import com.app.adec.screens.EventManagerScreen
+import com.app.adec.screens.EventRegisterScreen
+import com.app.adec.screens.FilterByDateScreen
+import com.app.adec.screens.GeneralSearchScreen
+import com.app.adec.screens.ProfileScreen
+import com.app.adec.screens.WebBrowserScreen
 
 // La MainActivity implementa la interfaz del MenuFragment para poder recibir los eventos de clic.
 class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
@@ -23,10 +31,15 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
     override fun onOptionClicked(option: String) {
         // Usa una expresión 'when' (similar a un switch) para decidir qué fragmento mostrar.
         val fragment: Fragment = when (option) {
-            "photos" -> PhotosFragment()
-            "video" -> VideoFragment()
-            "web" -> WebFragment()
-            else -> ProfileFragment() // Caso por defecto
+            "event_explorer" -> EventExplorerScreen()
+            "generic_search" -> GeneralSearchScreen()
+            "filter_by_date" -> FilterByDateScreen()
+            "event_manager" -> EventManagerScreen()
+            "event_register" -> EventRegisterScreen()
+            "customer_service" -> CustomerServiceScreen()
+            "profile" -> ProfileScreen()
+            "web" -> WebBrowserScreen()
+            else -> ProfileScreen() // Caso por defecto
         }
 
         // Inicia una transacción de fragmentos para reemplazar el contenido del contenedor derecho.

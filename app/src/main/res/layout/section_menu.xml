@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/fragment_menu.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:gravity="center_horizontal">
+
+    <!-- Cada botón representa una opción del menú -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textAllCaps="false"
+        android:gravity="center_horizontal"
+        android:text="@string/label_txt_menu" />
+
+    <Button
+        android:id="@+id/btn_event_explorer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_event_explorer" />
+
+    <Button
+        android:id="@+id/btn_generic_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_generic_search" />
+
+    <Button
+        android:id="@+id/btn_filter_by_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_filter_by_date" />
+
+    <Button
+        android:id="@+id/btn_event_manager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_event_manager" />
+
+    <Button
+        android:id="@+id/btn_event_register"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_event_register" />
+
+    <Button
+        android:id="@+id/btn_customer_service"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_customer_service" />
+
+    <Button
+        android:id="@+id/btn_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_profile" />
+
+    <Button
+        android:id="@+id/btn_web"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_layout_height"
+        android:textAllCaps="false"
+        android:text="@string/btn_txt_web" />
+</LinearLayout>
