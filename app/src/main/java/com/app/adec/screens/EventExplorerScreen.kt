@@ -10,12 +10,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.app.adec.R
-import com.app.adec.data.EventsConstants
+import com.app.adec.data.GLOBALEvents
 import java.time.format.DateTimeFormatter
 
 class EventExplorerScreen : Fragment() {
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +25,7 @@ class EventExplorerScreen : Fragment() {
         val cardsContainer = view.findViewById<LinearLayout>(R.id.cards_container)
 
         // Infla y añade cada card
-        for (event in EventsConstants().EVENTS) {
+        for (event in GLOBALEvents.get_events()) {
             val cardView = layoutInflater.inflate(R.layout.component_event_card, cardsContainer, false)
 
             val artistName = cardView.findViewById<TextView>(R.id.artist_name)
