@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
     override fun onOptionClicked(option: String) {
         // Usa una expresión 'when' (similar a un switch) para decidir qué fragmento mostrar.
         val fragment: Fragment = when (option) {
-            "event_explorer" -> EventExplorerScreen()
-            "generic_search" -> GeneralSearchScreen()
-            "filter_by_date" -> FilterByDateScreen()
-            "event_manager" -> EventManagerScreen()
-            "event_register" -> EventRegisterScreen()
-            "customer_service" -> CustomerServiceScreen()
-            "profile" -> ProfileScreen()
-            "web" -> WebBrowserScreen()
+            "event_explorer" -> EventExplorerScreen() // Carlos
+            "generic_search" -> GeneralSearchScreen() // Carlos
+            "filter_by_date" -> FilterByDateScreen() // TODO: Carlos
+            "event_manager" -> EventManagerScreen() // Camilo?
+            "event_register" -> EventRegisterScreen() // Camilo?
+            "customer_service" -> CustomerServiceScreen() // TODO: Omar
+            "profile" -> ProfileScreen() // TODO: Omar
+            "web" -> WebBrowserScreen() // Omar
             else -> EventExplorerScreen() // Caso por defecto
         }
 

@@ -20,4 +20,7 @@
     <string name="component_event_card_date_time_label">dd/MM/yyyy HH:mm:ss</string>
     <string name="component_event_card_short_description_label">Descripción breve del evento</string>
     <string name="btn_view_more_label">Ver más</string>
+    <string name="b_squeda_general">Búsqueda general</string>
+    <string name="evento_artista_categor_a_lugar">Evento, artista, categoría, lugar…</string>
+    <string name="no_se_encontr_resultados">No se encontró resultados.</string>
 </resources>
