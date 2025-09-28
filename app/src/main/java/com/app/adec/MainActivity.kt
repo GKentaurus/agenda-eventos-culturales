@@ -33,10 +33,10 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
         val fragment: Fragment = when (option) {
             "event_explorer" -> EventExplorerScreen() // Carlos
             "generic_search" -> GeneralSearchScreen() // Carlos
-            "filter_by_date" -> FilterByDateScreen() // TODO: Carlos
+            "filter_by_date" -> FilterByDateScreen() // Peter
             "event_manager" -> EventManagerScreen() // Camilo?
             "event_register" -> EventRegisterScreen() // Camilo?
-            "customer_service" -> CustomerServiceScreen() // TODO: Omar
+            "customer_service" -> CustomerServiceScreen() // TODO: Ferney
             "profile" -> ProfileScreen() // TODO: Omar
             "web" -> WebBrowserScreen() // Omar
             else -> EventExplorerScreen() // Caso por defecto

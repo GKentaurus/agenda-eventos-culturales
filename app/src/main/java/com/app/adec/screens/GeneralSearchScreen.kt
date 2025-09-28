@@ -32,8 +32,8 @@ class GeneralSearchScreen : Fragment() {
 
         // Busca el contenedor dentro del layout inflado
         cardsContainer = view.findViewById(R.id.cards_container)
-        searchEditText = view.findViewById(R.id.filter_search_text) // Initialize EditText
-        searchButton = view.findViewById(R.id.search_icon) // Initialize your search icon/button
+        searchEditText = view.findViewById(R.id.filter_search_text)
+        searchButton = view.findViewById(R.id.search_icon)
         resultLabel = view.findViewById(R.id.result_label)
 
         // Set an OnClickListener for the search button
