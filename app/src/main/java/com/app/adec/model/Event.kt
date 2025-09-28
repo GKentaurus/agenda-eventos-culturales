@@ -14,8 +14,10 @@ data class Event(
     var location : String,
     var datetime: LocalDateTime,
     var description: String,
-    var logo : Int,
-    var image : Int,
-    var ticketValue : BigDecimal,
-    var deleted: Boolean
+    var logoUri: String? = null,
+    var logoResId: Int? = null,
+    var imageUri: String? = null,
+    var imageResId: Int? = null,
+    var ticketValue: BigDecimal,
+    var deleted: Boolean = false
 ) : Parcelable

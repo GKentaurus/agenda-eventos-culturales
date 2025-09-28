@@ -20,4 +20,14 @@
     <string name="component_event_card_date_time_label">dd/MM/yyyy HH:mm:ss</string>
     <string name="component_event_card_short_description_label">Descripción breve del evento</string>
     <string name="btn_view_more_label">Ver más</string>
+    <string name="btn_txt_load_image">Cargar Imagen</string>
+    <string name="btn_txt_save">Guardar</string>
+    <string name="btn_txt_cancel">Cancelar</string>
+    <string name="placeholder_image_descriptor">Imagen supletoria</string>
+    <string name="toggle_txt_toggle_event">Habilitar evento</string>
+    <string name="event_location_hint">Ubicacion</string>
+    <string name="event_location_helper">Ingresa la ubicacion</string>
+    <string name="event_date_hint">Fecha y hora</string>
+    <string name="event_date_helper">Selecciona una fecha</string>
+
 </resources>
