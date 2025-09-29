@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/layout/fragment_profile.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
+    android:padding="0dp"
     android:background="#F0F4F8">
 
     <TextView
+        android:id="@+id/screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Hola! Esta es la sección de Búsqueda general."
-        android:textSize="24sp"
+        android:text="@string/b_squeda_general"
         android:textColor="#374151"
+        android:textSize="24sp"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/filter_search_text"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="@string/evento_artista_categor_a_lugar"
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/search_icon"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/result_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_se_encontr_resultados"
+        android:textColor="#374151"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/cards_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
