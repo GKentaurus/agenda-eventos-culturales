@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/fragment_profile.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
-    android:background="#F0F4F8">
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Hola! Esta es la sección de Servicio al cliente."
-        android:textSize="24sp"
-        android:textColor="#374151"
-        android:textStyle="bold" />
+        android:text="Preguntas frecuentes"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginBottom="12dp"/>
+
+    <ListView
+        android:id="@+id/lvFaqs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"/>
+
+    <Button
+        android:id="@+id/btnContactWhatsApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Contactar por WhatsApp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:textColor="@android:color/white" />
 </LinearLayout>
