@@ -54,7 +54,8 @@ dependencies {
     implementation(libs.androidx.fragment.ktx) // Add this line (use the latest stable version)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.appcompat.resources) // For loading and tinting drawables on older versions of the platform
+    implementation(libs.androidx.appcompat.resources)
+    implementation(libs.google.material) // For loading and tinting drawables on older versions of the platform
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 

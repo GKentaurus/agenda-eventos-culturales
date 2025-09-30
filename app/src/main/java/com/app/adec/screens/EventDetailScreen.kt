@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.app.adec.R
 import com.app.adec.model.Event
@@ -27,11 +28,15 @@ class EventDetailScreen : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.screen_event_detail, container, false)
 
-        // Vincula datos con vistas
         event?.let { e ->
             view.findViewById<TextView>(R.id.event_detail_artist_name).text = e.artist
             view.findViewById<TextView>(R.id.event_detail_category).text = e.category
-            view.findViewById<ImageView>(R.id.event_detail_image).setImageResource(e.image)
+            if (e.imageResId != null) {
+                view.findViewById<ImageView>(R.id.event_detail_image).setImageResource(e.imageResId!!)
+            } else if (e.imageUri != null) {
+                view.findViewById<ImageView>(R.id.event_detail_image).setImageURI(e.imageUri!!.toUri())
+            }
+
             view.findViewById<TextView>(R.id.event_detail_description).text = e.description
 
             view.findViewById<TextView>(R.id.event_detail_location).text = e.location

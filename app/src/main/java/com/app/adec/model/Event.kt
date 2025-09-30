@@ -7,14 +7,17 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Event(
-    val id : Int,
-    val artist: String,
-    val category: String,
-    val title: String,
-    val location : String,
-    val datetime: LocalDateTime,
-    val description: String,
-    val logo : Int,
-    val image : Int,
-    val ticketValue : BigDecimal
+    var id : Int,
+    var artist: String,
+    var category: String,
+    var title: String,
+    var location : String,
+    var datetime: LocalDateTime,
+    var description: String,
+    var logoUri: String? = null,
+    var logoResId: Int? = null,
+    var imageUri: String? = null,
+    var imageResId: Int? = null,
+    var ticketValue: BigDecimal,
+    var deleted: Boolean = false
 ) : Parcelable
