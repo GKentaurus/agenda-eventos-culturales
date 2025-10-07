@@ -19,8 +19,6 @@
 
     <!-- Detalles de evento -->
     <string name="event_detail_description_title">Descripción</string>
-    <string name="event_detail_location_title">Lugar</string>
-    <string name="event_detail_datetime_title">Fecha y hora</string>
     <string name="event_detail_location_datetime_title">Lugar y fecha</string>
     <string name="event_details_ticket_price_title">Valor de la entrada</string>
 
@@ -72,8 +70,4 @@
     <string name="hint_full_name">Nombre completo</string>
     <string name="hint_email">Correo electrónico</string>
     <string name="hint_phone">Teléfono</string>
-    <string name="administra_los_eventos">Administra los eventos</string>
-    <string name="edita_o_elimina_los_eventos_que_estan_listados">Edita o elimina los eventos que estan listados.</string>
-    <string name="eliminar">Eliminar</string>
-    <string name="editar">Editar</string>
 </resources>

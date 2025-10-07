@@ -12,6 +12,7 @@ import com.app.adec.screens.FilterByDateScreen
 import com.app.adec.screens.GeneralSearchScreen
 import com.app.adec.screens.ProfileScreen
 import com.app.adec.screens.WebBrowserScreen
+import com.app.adec.screens.PqrScreen // ✅ Importamos la nueva pantalla de PQR
 
 // La MainActivity implementa la interfaz del MenuFragment para poder recibir los eventos de clic.
 class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
         // Si es la primera vez que se crea la actividad, carga el fragmento por defecto.
         // Esto evita que se recargue el fragmento al girar la pantalla, por ejemplo.
         if (savedInstanceState == null) {
-            onOptionClicked("")
+            onOptionClicked("") // Mantengo el código original
         }
     }
 
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(), MenuFragment.OnOptionClickListener {
             "event_manager" -> EventManagerScreen() // Camilo?
             "event_register" -> EventRegisterScreen() // Camilo?
             "customer_service" -> CustomerServiceScreen() // TODO: Ferney
+            "pqr" -> PqrScreen() //  Nuevo caso para abrir el formulario PQR
             "profile" -> ProfileScreen() // TODO: Omar
             "web" -> WebBrowserScreen() // Omar
             else -> EventExplorerScreen() // Caso por defecto
