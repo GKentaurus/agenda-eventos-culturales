@@ -4,6 +4,13 @@
 
     <!-- Permiso para que el WebView y cualquier cliente HTTP puedan acceder a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Android 13+ (Tiramisu) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+    <!-- Soporte para Android 12 y anteriores -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+
 
 
     <application

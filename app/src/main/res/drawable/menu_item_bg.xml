@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo cuando está seleccionado -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="2dp"
+                android:color="?attr/colorPrimary" />
+            <corners android:radius="12dp" />
+            <padding
+                android:left="8dp"
+                android:top="6dp"
+                android:right="8dp"
+                android:bottom="6dp" />
+        </shape>
+    </item>
+
+    <!-- Fondo normal -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:radius="12dp" />
+            <padding
+                android:left="8dp"
+                android:top="6dp"
+                android:right="8dp"
+                android:bottom="6dp" />
+        </shape>
+    </item>
+</selector>

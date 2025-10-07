@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,38 +8,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center_horizontal">
-
-        <!-- Foto de perfil + botón cambiar -->
-        <ImageView
-            android:id="@+id/ivAvatar"
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:src="@android:drawable/sym_def_app_icon"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/cd_profile_photo" />
-
-        <Button
-            android:id="@+id/btnChangePhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_change_photo"
-            android:layout_marginTop="12dp" />
+        android:padding="16dp">
 
         <!-- Vista solo lectura -->
         <LinearLayout
             android:id="@+id/boxView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp">
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/cd_profile_photo"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CircleImage"
+                app:strokeWidth="2dp"
+                app:strokeColor="?attr/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_change_photo" />
 
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_user_name"
+                android:layout_marginTop="16dp"
+                android:text="@string/profile_name_placeholder"
                 android:textStyle="bold"
                 android:textSize="20sp" />
 
@@ -46,23 +48,23 @@
                 android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_user_email" />
+                android:text="@string/profile_email_placeholder" />
 
             <TextView
                 android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_user_phone_placeholder" />
+                android:text="—" />
 
             <Button
                 android:id="@+id/btnEditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_edit_profile"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="12dp" />
         </LinearLayout>
 
-        <!-- Formulario (modo edición) -->
+        <!-- Formulario -->
         <LinearLayout
             android:id="@+id/boxForm"
             android:layout_width="match_parent"
@@ -71,11 +73,29 @@
             android:visibility="gone"
             android:layout_marginTop="8dp">
 
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgAvatarForm"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/cd_profile_photo"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CircleImage"
+                app:strokeWidth="2dp"
+                app:strokeColor="?attr/colorPrimary" />
+
+            <Button
+                android:id="@+id/btnChangePhotoForm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_change_photo" />
+
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_full_name"
+                android:hint="@string/hint_fullname"
                 android:inputType="textPersonName"
                 android:autofillHints="name" />
 
@@ -85,8 +105,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
-                android:autofillHints="emailAddress"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:autofillHints="emailAddress" />
 
             <EditText
                 android:id="@+id/etPhone"
@@ -94,35 +114,29 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_phone"
                 android:inputType="phone"
-                android:autofillHints="phone"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:autofillHints="phone" />
 
-            <!-- Button Bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="end"
-                android:layout_marginTop="12dp"
-                android:theme="@android:style/ThemeOverlay.Material.Light"
-                style="?android:attr/buttonBarStyle">
+                android:layout_marginTop="12dp">
 
                 <Button
                     android:id="@+id/btnCancelEdit"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_cancel" />
 
                 <Button
                     android:id="@+id/btnSaveProfile"
-                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_save"
-                    android:layout_marginStart="12dp"/>
+                    android:layout_marginStart="12dp" />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
