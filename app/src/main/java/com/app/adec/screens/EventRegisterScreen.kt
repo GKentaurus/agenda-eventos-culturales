@@ -2,6 +2,7 @@ package com.app.adec.screens
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,9 +19,12 @@ import com.app.adec.R
 import com.app.adec.data.GLOBALEvents
 import com.app.adec.model.Event
 import com.google.android.material.textfield.TextInputEditText
+import java.io.File
+import java.io.FileOutputStream
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import java.util.UUID
 
 class EventRegisterScreen : Fragment() {
 
@@ -37,26 +41,58 @@ class EventRegisterScreen : Fragment() {
     private var selectedDateTime: LocalDateTime? = null
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
-
     private var uriMain: Uri? = null
     private var uriLogo: Uri? = null
 
+    private var event: Event? = null
+
+    // Registrador para la imagen principal
     private val pickMainImage = registerForActivityResult(
         ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        uri?.let {
-            uriMain = it
-            imageViewMain.setImageURI(it)
+    ) { tempUri: Uri? ->
+        tempUri?.let {
+            // Concede permiso persistente para el URI temporal (importante)
+            requireContext().contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            // Copia el archivo y actualiza la UI
+            uriMain = copyUriToInternalStorage(it, "main_${UUID.randomUUID().toString().replace("-","_")}")
+            imageViewMain.setImageURI(uriMain)
         }
     }
 
+    // Registrador para el logo
     private val pickLogoImage = registerForActivityResult(
         ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        uri?.let {
-            uriLogo = it
-            imageViewLogo.setImageURI(it)
+    ) { tempUri: Uri? ->
+        tempUri?.let {
+            // Concede permiso persistente para el URI temporal (importante)
+            requireContext().contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            // Copia el archivo y actualiza la UI
+            uriLogo = copyUriToInternalStorage(it, "logo_${UUID.randomUUID().toString().replace("-","_")}")
+            imageViewLogo.setImageURI(uriLogo)
         }
+    }
+
+    private fun copyUriToInternalStorage(uri: Uri, fileName: String): Uri? {
+        return try {
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            val file = File(requireContext().cacheDir, fileName)
+            val outputStream = FileOutputStream(file)
+            inputStream?.copyTo(outputStream)
+            inputStream?.close()
+            outputStream.close()
+            // Devuelve el URI del archivo copiado
+            file.toUri()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(requireContext(), "Failed to copy image", Toast.LENGTH_SHORT).show()
+            null
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Recupera el Event desde los argumentos
+        event = arguments?.getParcelable("event_data")
     }
 
     override fun onCreateView(
@@ -67,14 +103,15 @@ class EventRegisterScreen : Fragment() {
         val view = inflater.inflate(R.layout.screen_event_register, container, false)
 
         // Image views
-        imageViewMain = view.findViewById(R.id.imageView1)
-        imageViewLogo = view.findViewById(R.id.imageView2)
+        imageViewMain = view.findViewById(R.id.mainImagePreview)
+        imageViewLogo = view.findViewById(R.id.logoImagePreview)
 
         // Text fields
         artistField = view.findViewById(R.id.artist)
         categoryField = view.findViewById(R.id.category)
         titleField = view.findViewById(R.id.title)
         descriptionField = view.findViewById(R.id.description)
+        locationField = view.findViewById(R.id.location)
         priceField = view.findViewById(R.id.price)
 
         // Buttons
@@ -82,18 +119,49 @@ class EventRegisterScreen : Fragment() {
         cancelButton = view.findViewById(R.id.cancel_button)
 
         // Launch image pickers when the buttons are clicked
-        view.findViewById<Button>(R.id.buttonSelect1).setOnClickListener {
+        view.findViewById<Button>(R.id.loadMainImage).setOnClickListener {
             pickMainImage.launch("image/*")
         }
-        view.findViewById<Button>(R.id.buttonSelect2).setOnClickListener {
+        view.findViewById<Button>(R.id.loadLogoImage).setOnClickListener {
             pickLogoImage.launch("image/*")
         }
 
         saveButton.setOnClickListener { onSaveClicked() }
         cancelButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
+        this.loadEvent()
+
         return view
     }
+
+
+    private fun loadEvent() {
+        event?.let { event ->
+            // La lógica ahora es única para los URIs
+            if (event.logoUri != null) {
+                val loadedUri = event.logoUri!!.toUri()
+                imageViewLogo.setImageURI(loadedUri)
+                uriLogo = loadedUri
+            }
+
+            if (event.imageUri != null) {
+                val loadedUri = event.imageUri!!.toUri()
+                imageViewMain.setImageURI(loadedUri)
+                uriMain = loadedUri
+            }
+
+            artistField.setText(event.artist)
+            categoryField.setText(event.category)
+            titleField.setText(event.title)
+            descriptionField.setText(event.description)
+            locationField.setText(event.location)
+            priceField.setText(event.ticketValue.toString())
+            selectedDateTime = event.datetime
+            saveButton.setOnClickListener { onUpdateClicked(event) }
+        }
+    }
+
+
 
     private fun validateInputs(): Boolean {
         var valid = true
@@ -158,6 +226,25 @@ class EventRegisterScreen : Fragment() {
         requireActivity().onBackPressedDispatcher.onBackPressed()
     }
 
+    private fun onUpdateClicked(event: Event) {
+        if (!validateInputs()) {
+            return
+        }
+
+        event.artist = artistField.text.toString().trim()
+        event.category = categoryField.text.toString().trim()
+        event.title = titleField.text.toString().trim()
+        event.location = locationField.text.toString().trim()
+        event.datetime = selectedDateTime?: throw IllegalStateException("Event date/time is required")
+        event.description = descriptionField.text.toString().trim()
+        event.ticketValue = priceField.text.toString().trim().toBigDecimal()
+        event.imageUri = uriMain!!.toString()
+        event.logoUri = uriLogo!!.toString()
+
+        Toast.makeText(requireContext(), "Event Updated", Toast.LENGTH_SHORT).show()
+        requireActivity().onBackPressedDispatcher.onBackPressed()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         uriMain?.let { outState.putString("uri_main", it.toString()) }
@@ -167,8 +254,8 @@ class EventRegisterScreen : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         savedInstanceState?.let {
-            uriMain = it.getString("uri_main")?.let { s -> s.toUri() }
-            uriLogo = it.getString("uri_logo")?.let { s -> s.toUri() }
+            uriMain = it.getString("uri_main")?.toUri()
+            uriLogo = it.getString("uri_logo")?.toUri()
             uriMain?.let { imageViewMain.setImageURI(it) }
             uriLogo?.let { imageViewLogo.setImageURI(it) }
         }
@@ -177,7 +264,7 @@ class EventRegisterScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val dateEdit = view.findViewById<TextInputEditText>(R.id.event_date)
+        val dateEdit = view.findViewById<TextInputEditText>(R.id.eventDate)
 
         dateEdit.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -205,6 +292,16 @@ class EventRegisterScreen : Fragment() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
+        }
+    }
+
+    companion object {
+        fun newInstance(event: Event): EventRegisterScreen {
+            val fragment = EventRegisterScreen()
+            val args = Bundle()
+            args.putParcelable("event_data", event)
+            fragment.arguments = args
+            return fragment
         }
     }
 }
