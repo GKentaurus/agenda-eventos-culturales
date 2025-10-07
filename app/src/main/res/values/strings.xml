@@ -70,4 +70,9 @@
     <string name="hint_full_name">Nombre completo</string>
     <string name="hint_email">Correo electrónico</string>
     <string name="hint_phone">Teléfono</string>
+
+    <string name="profile_error_name_required">El nombre es obligatorio.</string>
+    <string name="profile_error_email_invalid">El correo no es válido.</string>
+    <string name="profile_saved_ok">Perfil guardado con éxito.</string>
+
 </resources>
