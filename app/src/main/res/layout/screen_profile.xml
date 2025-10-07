@@ -1,18 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- res/layout/fragment_profile.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
-    android:background="#F0F4F8">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Hola! Esta es la sección de Perfil."
-        android:textSize="24sp"
-        android:textColor="#374151"
-        android:textStyle="bold" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Foto de perfil + botón cambiar -->
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/cd_profile_photo" />
+
+        <Button
+            android:id="@+id/btnChangePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_change_photo"
+            android:layout_marginTop="12dp" />
+
+        <!-- Vista solo lectura -->
+        <LinearLayout
+            android:id="@+id/boxView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_user_name"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_user_email" />
+
+            <TextView
+                android:id="@+id/tvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_user_phone_placeholder" />
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_edit_profile"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+
+        <!-- Formulario (modo edición) -->
+        <LinearLayout
+            android:id="@+id/boxForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_full_name"
+                android:inputType="textPersonName"
+                android:autofillHints="name" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_phone"
+                android:inputType="phone"
+                android:autofillHints="phone"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Button Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="12dp"
+                android:theme="@android:style/ThemeOverlay.Material.Light"
+                style="?android:attr/buttonBarStyle">
+
+                <Button
+                    android:id="@+id/btnCancelEdit"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_cancel" />
+
+                <Button
+                    android:id="@+id/btnSaveProfile"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_save"
+                    android:layout_marginStart="12dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
