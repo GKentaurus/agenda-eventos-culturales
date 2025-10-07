@@ -26,8 +26,8 @@ class EventExplorerScreen : Fragment() {
         val cardsContainer = view.findViewById<LinearLayout>(R.id.cards_container)
 
         // Infla y añade cada card
-        for (event in GLOBALEvents.getEvents()) {
-            val cardView = layoutInflater.inflate(R.layout.component_event_card, cardsContainer, false)
+        for (event in GLOBALEvents.getEvents(showDeleted = false)) {
+            val cardView = layoutInflater.inflate(R.layout.component_event_card_view, cardsContainer, false)
 
             val artistName = cardView.findViewById<TextView>(R.id.artist_name)
             val category = cardView.findViewById<TextView>(R.id.event_category)
@@ -43,18 +43,8 @@ class EventExplorerScreen : Fragment() {
             eventTitle.text = event.title
             eventDateTime.text = event.datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
             eventDescription.text = event.description
-
-            if (event.logoResId != null) {
-                eventLogoImage.setImageResource(event.logoResId!!)
-            } else if (event.logoUri != null) {
-                eventLogoImage.setImageURI(event.logoUri!!.toUri())
-            }
-
-            if (event.imageResId != null) {
-                eventMainImage.setImageResource(event.imageResId!!)
-            } else if (event.imageUri != null) {
-                eventMainImage.setImageURI(event.imageUri!!.toUri())
-            }
+            eventLogoImage.setImageURI(event.logoUri!!.toUri())
+            eventMainImage.setImageURI(event.imageUri!!.toUri())
 
             button.setOnClickListener {
                 val detailFragment = EventDetailScreen.newInstance(event)

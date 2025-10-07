@@ -54,7 +54,7 @@ class GeneralSearchScreen : Fragment() {
         // Clear existing cards
         cardsContainer.removeAllViews()
 
-        val allEvents = GLOBALEvents.getEvents()
+        val allEvents = GLOBALEvents.getEvents(showDeleted = false)
         val filteredEvents = if (query.isBlank()) {
             emptyList()
         } else {
@@ -80,7 +80,7 @@ class GeneralSearchScreen : Fragment() {
 
     private fun addEventCardToContainer(event: Event) { // Assuming Event is your data class
         // Infla y añade cada card filtrada
-        val cardView = layoutInflater.inflate(R.layout.component_event_card, cardsContainer, false)
+        val cardView = layoutInflater.inflate(R.layout.component_event_card_view, cardsContainer, false)
 
         val artistName = cardView.findViewById<TextView>(R.id.artist_name)
         val category = cardView.findViewById<TextView>(R.id.event_category)
@@ -94,21 +94,10 @@ class GeneralSearchScreen : Fragment() {
         artistName.text = event.artist
         category.text = event.category
         eventTitle.text = event.title
-        eventDateTime.text =
-            event.datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+        eventDateTime.text = event.datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
         eventDescription.text = event.description
-
-        if (event.logoResId != null) {
-            eventLogoImage.setImageResource(event.logoResId!!)
-        } else if (event.logoUri != null) {
-            eventLogoImage.setImageURI(event.logoUri!!.toUri())
-        }
-
-        if (event.imageResId != null) {
-            eventMainImage.setImageResource(event.imageResId!!)
-        } else if (event.imageUri != null) {
-            eventMainImage.setImageURI(event.imageUri!!.toUri())
-        }
+        eventLogoImage.setImageURI(event.logoUri!!.toUri())
+        eventMainImage.setImageURI(event.imageUri!!.toUri())
 
         button.setOnClickListener {
             val detailFragment = EventDetailScreen.newInstance(event)

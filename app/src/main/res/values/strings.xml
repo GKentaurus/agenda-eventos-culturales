@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- App -->
+    <!-- Nombre de la app -->
     <string name="app_name">Agenda de Eventos Culturales</string>
-    <string name="label_txt_menu">Menú</string>
-    <string name="welcome_landing_top_bar">¡Bienvenid@!</string>
-    <string name="subtitle_event_explorer">Explora los eventos que vienen en camino</string>
 
-    <!-- Menú (botones) -->
+    <!-- Botones del menú principal -->
     <string name="btn_txt_event_explorer">Explorar eventos</string>
     <string name="btn_txt_generic_search">Búsqueda general</string>
     <string name="btn_txt_filter_by_date">Filtrar por fecha</string>
@@ -16,13 +11,18 @@
     <string name="btn_txt_customer_service">Servicio al cliente</string>
     <string name="btn_txt_profile">Perfil</string>
     <string name="btn_txt_web">Web</string>
+    <string name="label_txt_menu">Menú</string>
 
-    <!-- Detalle de evento -->
+    <!-- Pantalla de bienvenida -->
+    <string name="welcome_landing_top_bar">¡Bienvenid@!</string>
+    <string name="subtitle_event_explorer">Explora los eventos que vienen en camino</string>
+
+    <!-- Detalles de evento -->
     <string name="event_detail_description_title">Descripción</string>
     <string name="event_detail_location_datetime_title">Lugar y fecha</string>
     <string name="event_details_ticket_price_title">Valor de la entrada</string>
 
-    <!-- Tarjeta de evento -->
+    <!-- Componente tarjeta de evento -->
     <string name="component_event_card_artist_name">Nombre del artista</string>
     <string name="component_event_card_category">Categoría relacionada al evento</string>
     <string name="component_event_card_event_title">Título del evento</string>
@@ -30,50 +30,44 @@
     <string name="component_event_card_short_description_label">Descripción breve del evento</string>
     <string name="btn_view_more_label">Ver más</string>
 
-    <!-- Búsquedas (mantengo las claves que ya existían) -->
+    <!-- Búsqueda -->
     <string name="b_squeda_general">Búsqueda general</string>
     <string name="evento_artista_categor_a_lugar">Evento, artista, categoría, lugar…</string>
     <string name="no_se_encontr_resultados">No se encontró resultados.</string>
     <string name="b_squeda_por_fecha">Búsqueda por fecha</string>
     <string name="seleccionar_fecha">Seleccionar fecha</string>
 
-    <!-- Campos genéricos para formularios de eventos -->
+    <!-- Registro de evento -->
+    <string name="btn_txt_load_image">Cargar Imagen</string>
+    <string name="btn_txt_save">Guardar</string>
+    <string name="btn_txt_cancel">Cancelar</string>
+    <string name="placeholder_image_descriptor">Imagen supletoria</string>
+    <string name="toggle_txt_toggle_event">Habilitar evento</string>
     <string name="event_location_hint">Ubicación</string>
     <string name="event_location_helper">Ingresa la ubicación</string>
     <string name="event_date_hint">Fecha y hora</string>
     <string name="event_date_helper">Selecciona una fecha</string>
 
-    <!-- Botones genéricos -->
-    <string name="btn_txt_load_image">Cargar Imagen</string>
-    <string name="btn_txt_save">Guardar</string>
-    <string name="btn_txt_cancel">Cancelar</string>
+    <!-- ======================== -->
+    <!-- NUEVAS CADENAS: PERFIL -->
+    <!-- ======================== -->
 
-    <!-- WebView / Navegador interno -->
-    <string name="hint_url">Escribe una URL</string>
-    <string name="btn_go">Ir</string>
-    <string name="cd_webview">Navegador interno</string>
-    <string name="label_progress">Progreso</string>
-
-    <!-- Perfil -->
+    <!-- A11y -->
     <string name="cd_profile_photo">Foto de perfil</string>
+
+    <!-- Vista de perfil (solo lectura) -->
+    <string name="profile_user_name">Nombre del Usuario</string>
+    <string name="profile_user_email">correo@ejemplo.com</string>
+    <string name="profile_user_phone_placeholder">—</string>
+
+    <!-- Botones -->
     <string name="btn_change_photo">Cambiar foto</string>
     <string name="btn_edit_profile">EDITAR PERFIL</string>
-    <string name="profile_name_placeholder">Nombre del Usuario</string>
-    <string name="profile_email_placeholder">correo@ejemplo.com</string>
+    <string name="btn_cancel">CANCELAR</string>
+    <string name="btn_save">GUARDAR</string>
 
-    <string name="hint_fullname">Nombre completo</string>
+    <!-- Placeholders del formulario -->
+    <string name="hint_full_name">Nombre completo</string>
     <string name="hint_email">Correo electrónico</string>
     <string name="hint_phone">Teléfono</string>
-    <string name="placeholder_image_descriptor">Imagen de evento (placeholder)</string>
-    <string name="toggle_txt_toggle_event">Publicar / Despublicar</string>
-
-
-    <!-- Botones para el perfil (nota: son diferentes claves a las genéricas para evitar colisión) -->
-    <string name="btn_save">GUARDAR</string>
-    <string name="btn_cancel">CANCELAR</string>
-
-    <!-- Mensajes y validaciones -->
-    <string name="err_required">Este campo es obligatorio</string>
-    <string name="msg_saved_ok">Guardado con éxito</string>
-
 </resources>
