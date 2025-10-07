@@ -10,9 +10,10 @@ import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.app.adec.R
-import com.app.adec.data.EventsConstants
+import com.app.adec.data.GLOBALEvents
 import com.app.adec.model.Event
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -68,7 +69,7 @@ class FilterByDateScreen : Fragment() {
 // Clear existing cards
         cardsContainer.removeAllViews()
 
-        val allEvents = EventsConstants().EVENTS
+        val allEvents = GLOBALEvents.getEvents()
         val filteredEvents = if (date.isBlank()) {
             emptyList()
         } else {
@@ -106,8 +107,18 @@ class FilterByDateScreen : Fragment() {
         eventDateTime.text =
             event.datetime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
         eventDescription.text = event.description
-        eventLogoImage.setImageResource(event.logo)
-        eventMainImage.setImageResource(event.image)
+
+        if (event.logoResId != null) {
+            eventLogoImage.setImageResource(event.logoResId!!)
+        } else if (event.logoUri != null) {
+            eventLogoImage.setImageURI(event.logoUri!!.toUri())
+        }
+
+        if (event.imageResId != null) {
+            eventMainImage.setImageResource(event.imageResId!!)
+        } else if (event.imageUri != null) {
+            eventMainImage.setImageURI(event.imageUri!!.toUri())
+        }
 
         button.setOnClickListener {
             val detailFragment = EventDetailScreen.newInstance(event)

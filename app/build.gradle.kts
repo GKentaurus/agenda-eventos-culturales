@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.appcompat.resources) // For loading and tinting drawables on older versions of the platform
-
+    implementation(libs.material) // This is the correct reference
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
     testImplementation(libs.junit)
